@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trái Tim Rơi</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      position: relative;
+    }
+    .heart {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: red;
+      transform: rotate(45deg);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      opacity: 0.8;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -6px;
+      left: 0;
+    }
+    .heart:after {
+      left: -6px;
+      top: 0;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    for(let i = 0; i < 100; i++){
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * -100 + 'vh';
+      heart.style.animationDuration = (3 + Math.random() * 4) + 's';
+      heart.style.opacity = 0.5 + Math.random() * 0.5;
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
